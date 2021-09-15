@@ -1,61 +1,63 @@
-class Ellipse {
-  constructor(x, y, w, h, vx, vy, color) {
-      this.x = x;
-      this.y = y;
-      this.w = w;
-      this.h = h;
-      this.vx = vx;
-      this.vy = vy
-      this.color = color
+class Ball{
+  constructor(x, y, w, h, vx, vy,_color){
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+    this.vx = vx;
+    this.vy = vy;
+    this.color = _color
   }
 
-  drawEllipse(){
-    fill(this.color)
-    ellipse(this.x, this.y, this.w, this.h);
-
-
-    this.y = this.y + this.vy;
+ draw() {
+ fill(this.color)
+ rect(this.x,this.y,50,50);
     this.x = this.x + this.vx;
+    this.y = this.y + this.vy;
 
-
-    if(this.x <=0 || this.x >=300){
+    if(this.x > 500 || this.x < 0){
       this.vx = this.vx * -1;
     }
 
-    if(this.y <=0 || this.y >=300){
+    if(this.y < 0 || this.y > 400){
       this.vy = this.vy * -1;
-
     }
   }
 }
 
-var ballList = []; 
-function setup(){
-  createCanvas(300, 300);
-
-  for(var i = 0; i <10; i ++){
-    var r = Math.floor(Math.random() * ^6) + 1;
-    var r = Math.floor(Math.random() * ^500) + 1;
-  balllist.push9=
+var ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, ball11, ball12;
+var ballList = [];
 
 
- // ball1 = new Ellipse(60,10,30,30,5,5,"white");
- // ball2 = new Ellipse(10,100,30,30,5,5,"yellow");
- // ball3 = new Ellipse(10,10,30,30,5,5,"red");
- // ball4 = new Ellipse(50,10,30,30,5,5,"green");
- // ball5 = new Ellipse(1,50,30,30,5,5,"orange");
- // ball6 = new Ellipse(20,10,30,30,5,5,"blue");
-
+function setup() {
+  createCanvas(500, 400);
+  for(var i = 0; i < 50; i++){
+    var r = Math.floor(Math.random() * 6) + 1;
+    var x = Math.floor(Math.random() * 500) + 1;
+    var y = Math.floor(Math.random() * 500) + 1;
+    var c = Math.floor(Math.random() * 255) + 1;
+    var l = Math.floor(Math.random() * 80) + 1;
+    ball = new Ball(x,y,l,50,r,r,c);
+    ballList.push(ball);
+  }
+  // ball1 = new Ball(30,200,50,50,5,5,"black")
+  // ball2 = new Ball(30,200,50,50,55,5,"yellow")
+  // ball3 = new Ball(30,200,50,50,3,5,"blue")
+  // ball4 = new Ball(30,100,50,50,0.5,1,"red")
+  // ball5 = new Ball(30,200,50,50,5,5,"black")
+  // ball6 = new Ball(100,200,50,50,30,5,"purple")
+  // ball7 = new Ball(30,200,50,50,20,10,"pink")
+  // ball8 = new Ball(30,200,40,50,35,5,"orange")
+  // ball9 = new Ball(30,200,40,50,6,2,"lightblue")
+  // ball10 = new Ball(30,200,50,50,1,1,"pink")
+  // ball11 = new Ball(30,200,40,50,0.3,0.3,"orange")
+  // ball12 = new Ball(30,200,40,50,0.2,0.2,"lightblue")
 }
 
-function draw(){
-  background(225);
-
-  ball1.drawEllipse();
-  ball2.drawEllipse();
-  ball3.drawEllipse();
-  ball4.drawEllipse();
-  ball5.drawEllipse();
-  ball6.drawEllipse();
-
+function draw() {
+  background(255);
+  ballList.forEach(function(ball){
+    ball.draw();
+  }); 
+ 
 }
